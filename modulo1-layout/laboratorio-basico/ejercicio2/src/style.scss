@@ -1,0 +1,47 @@
+@import "tema1.scss";
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.container {
+    display: flex;
+    flex-flow: column;
+    padding: 50px;
+
+    .box {
+        width: 120px;
+        height: 90px;
+        padding-top: 15px;
+        padding-left: 20px;
+        margin-bottom: 2px;
+        border: 1px solid black;
+        border-radius: $border-radius;
+
+        &-base {
+            background: $color-base;
+        }
+
+        &-importan {
+            background-color: $color-importan;
+        }
+        &-warning {
+            background-color: $color-warning;
+        }
+        &-shadow {
+            box-shadow: $shadow-box;
+        }
+    } 
+    .principal-font {
+        font-family: $font-primary;
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+    .secondary-font {
+        font-family: $font-secondary;
+        margin-bottom: 20px;
+
+    } 
+}

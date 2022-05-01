@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.menu,header {
+    display: flex;
+    padding: 10px;
+  }
+  
+  .menu > li {
+    flex: 1;
+    background-color: hsl(192, 75%, 37%);
+    color: white;
+    text-align: center;
+    padding: 10px 0px;
+    list-style: none;
+    cursor: pointer;
+  }
+  
+  .menu > li:hover {
+    background-color: hsl(192, 86%, 24%);
+  }
+  
+  @media screen and (max-width: 500px) {
+    .menu {
+      flex-direction: column;
+    }
+    h1 {
+      font-size: x-large;
+    }
+  }
