@@ -1,0 +1,147 @@
+@import "variables.scss";
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// body{
+//     height: 100vh;
+// }
+
+.toolbar {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+}
+
+.page-title {
+    background-color: $background-color1;
+    color: $color;
+    font-size: x-large;
+    padding: 1rem;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: row;
+    flex:1;
+}
+
+nav {
+    background-color: $background-color2;
+    .menu-container {
+        position: sticky;
+        top: 0;
+    }
+    .menu-title {
+        color: $color;
+        padding: 0.7rem;
+        font-size: large;
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+    
+    ul {
+        background-color: $background-color3;
+        list-style-type: none;
+        li{
+            padding: 0.5rem;
+            border-bottom: 1px solid $color-border-li;
+            border-right: 1px solid $color-border-li;
+        }
+    }
+}
+
+
+
+main {
+    background-color: $background-color4;
+    // width: 100%;
+    // height: 100vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-content: flex-start;
+    flex: 1;
+    .list {
+        display: flex;
+        // flex: 1;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-content: flex-start;
+        // height: 100vh;
+    }
+    .card {
+        margin: 1rem 1.3rem ;
+        width: 200px;
+        height: 150px;
+        .member-name {
+            text-align: center;
+        }
+        
+    }
+    div.list > div {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+        align-items: center;
+        justify-items: center;
+        background-color: $color;
+        border: 1px solid $color-border-card;
+        border-radius: 5px;
+        padding: 1rem;
+
+        img {
+            border-radius: 50%;
+        }
+    }
+}
+
+footer {
+    background-color: $background-color3;
+    padding: 0.5rem;
+}
+
+
+@media screen and (max-width: 768px) {
+
+    .page-container {
+        display: flex;
+        flex-direction: column;
+    }
+    nav {
+    
+        .menu-title {
+            display: none;
+        }
+        
+        ul {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+            background-color: $background-color2;
+            list-style-type: none;
+            width: 100%;
+            height: 50px;
+            padding: 30px 10px;
+            
+            li{
+                width: 100%;
+                border: none;
+                background-color: $background-color3;
+                margin: 8px;
+            }
+        }
+    }
+
+}
+    
+
