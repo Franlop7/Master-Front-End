@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  height: 100vh;
+}
+
 .toolbar {
   display: flex;
   justify-content: space-between;
@@ -21,6 +25,7 @@
   display: flex;
   flex-direction: row;
   flex: 1;
+  height: 100%;
 }
 
 nav {
@@ -46,16 +51,11 @@ nav ul li {
   padding: 0.5rem;
   border-bottom: 1px solid hsl(63deg, 27%, 87%);
   border-right: 1px solid hsl(63deg, 27%, 87%);
+  cursor: pointer;
 }
 
 main {
   background-color: hsl(0deg, 0%, 94%);
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: flex-start;
-  flex: 1;
 }
 main .list {
   display: flex;
@@ -118,6 +118,25 @@ footer {
     border: none;
     background-color: hsl(64deg, 77%, 93%);
     margin: 8px;
+  }
+
+  main .list {
+    display: flex;
+    flex-flow: column wrap;
+  }
+  main .list .card {
+    width: 90vw;
+    margin: 20px;
+    margin-bottom: -15px;
+    border: none;
+  }
+  main .list .item {
+    display: flex;
+    flex-direction: row;
+  }
+  main .list .item .member-name {
+    margin: 1rem;
+    font-size: 150%;
   }
 }
 
