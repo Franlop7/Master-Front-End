@@ -8,6 +8,8 @@
 
 body{
     height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .toolbar {
@@ -26,8 +28,8 @@ body{
 .page-container {
   display: flex;
   flex-direction: row;
+  // La propiedad felx necesita que su padre sea flex para que funcione. porque los hijos heredan de su padre
   flex: 1;
-  height: 100%;
 }
 
 nav {
@@ -59,22 +61,12 @@ nav {
 
 main {
   background-color: $background-color4;
-  // width: 100%;
-  // height: 100vh;
-  // display: flex;
-  // flex-direction: row;
-  // flex-wrap: wrap;
-  // justify-content: space-around;
-  // align-content: flex-start;
-  // flex: 1;
   .list {
     display: flex;
-    // flex: 1;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
     align-content: flex-start;
-    // height: 100vh;
   }
   .card {
     margin: 1rem 1.3rem;
@@ -111,7 +103,6 @@ footer {
   .page-container {
     display: flex;
     flex-direction: column;
-    // height: 0;
   }
   nav {
     .menu-title {

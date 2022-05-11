@@ -6,6 +6,8 @@
 
 body {
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .toolbar {
@@ -25,7 +27,6 @@ body {
   display: flex;
   flex-direction: row;
   flex: 1;
-  height: 100%;
 }
 
 nav {
