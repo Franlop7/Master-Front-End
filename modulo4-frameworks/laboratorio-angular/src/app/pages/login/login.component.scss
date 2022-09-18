@@ -1,0 +1,30 @@
+mat-card {
+    padding: 4rem;
+    margin-top: 10rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+button {
+    margin-top: 2rem;
+}
+
+.mat-progress-spinner {
+    margin-left: 2rem;
+    display: inline;
+}
+
+:host {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}

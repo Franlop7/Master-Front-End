@@ -1,0 +1,11 @@
+<header>
+  <mat-toolbar color="primary">
+      <div class="logo-title">
+      <img src="assets/angular-icon-1.svg" alt="website logo" class="logo" />
+      <span>My App</span>
+    </div>
+    <app-menu-public *ngIf="!isLogged"></app-menu-public>
+    <app-menu-private *ngIf="isLogged" class="menu-private"></app-menu-private>
+    <div *ngIf="isLogged">Hola, {{ username }} <button mat-button (click)="logout()">Logout</button></div>
+  </mat-toolbar>
+</header>

@@ -1,0 +1,18 @@
+<mat-card>
+    <h1 color="primary">My App</h1>
+    <form [formGroup]="loginForm" #form="ngForm">
+        <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <input matInput [formControl]="username" />
+            <mat-error *ngIf="form.submitted && username.invalid && username.errors?.['required']">Campo requerido.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input type="password" matInput [formControl]="password" />
+            <mat-error *ngIf="form.submitted && password.invalid && password.errors?.['required']">Campo requerido.</mat-error>
+        </mat-form-field>
+        <button mat-raised-button color="primary" (click)="login()" [disabled]="form.submitted && (loginForm.invalid || loading)">
+            Entrar<mat-spinner *ngIf="loading" diameter="15"></mat-spinner>
+        </button>
+    </form>
+</mat-card>
