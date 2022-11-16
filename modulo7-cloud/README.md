@@ -88,19 +88,51 @@ copiamos https://github.com/heroku/heroku-buildpack-static.git y lo pegamos en a
 -Ahora subiremos los fichero al repositorio de despliegue que nos proporciono heroku git URL ...
 -Ahora nos clonamos ese nuevo repositoria que nos creo heroku. Para ello creamos una nueva carpeta y la abrimos con nuestro editor te texto, en mi caso vscode. Desde la consola hacemos `git clone URL .` que nos proporciono heroku.Importante el espacio . Después de la URL. Para que genere la carpeta de .git.
 -Instalamos heroku CLI de forma global. `npm i -g heroku`.
--Una vez instalado, en consola `heroku login`. Pediara que pulsemos cualquier teclar, se abrira el navegador y solo tenemos que hacer login. En consola saldra que ya estamos logged.
+-Una vez instalado, en consola `heroku login`. Pulsa cualquier tecla, se abrirá el navegador y solo tenemos que hacer login. En consola saldrá que ya estamos logged.
 -Ahora solo tenemos que copiar nuestros ficheros compilados, los de nuestra app y lo pegamos en la carpeta que creamos anteriormente.
 -Creamos un fichero de configuracion static.json en la raiz. para indicarle la ruta donde tiene que buscar el index.htm de nuestra app. en static.json añadimos lo siguiente: `{ "root": "./" }`.
 -Ahora solo queda hacer `git add .`, `git commit -u "add static files"`, `git push heroku master`.
 -Ya tenemos nuestra app desplegada. 
-https://master-front-lemoncode-heroku.herokuapp.com/
 
 2. Desplegar aplicación front de forma automática + Docker en Heroku.
 
+-Creamos un nuevo repositorio en GitHub y hacemos todos los pasos ya visto en ejercicios anteriores.
+-Vamos a Heroku y creamos una nueva app
+-Hacemos login en Heroku desde nuesta consola `heroku login` y `heroku authorizations:create -d name-app`, se puede poner el mismo nombre que le diste a la app al crearla en Heroku en el paso 2, pero no es relevante. Nos dara un Token.
+-Copiamos ese Token y nos vamos a nuestro repositorio en GitHub a Settings, Secrets y Actions. Creamos uno nuevo le llamamos por ejemplo HEROKU_API_KEY y pegamos el Token. Creamos un nuevo secreto llamado HEROKU_APP_NAME y en secret ponemos el nombre de nuestra app creada en Heroku.
 
 
+-En nuestro fichero cd.yml que esta dentro de .github/workflows. tiene que quedar tal que así.
 
+name: Continuos Deployment workflow
 
+on:
+  push:
+    branches:
+      - master
+
+env:
+  HEROKU_API_KEY: ${{secrets.HEROKU_API_KEY}}
+  IMAGE_NAME: registry.heroku.com/${{secrets.HEROKU_APP_NAME}}/web
+
+jobs:
+  cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Heroku login
+        run: heroku container:login
+      - name: Build docker image
+        run: docker build -t ${{env.IMAGE_NAME}} .
+      - name: Deploy docker image
+        run: docker push ${{env.IMAGE_NAME}}
+      - name: Release
+        run: heroku container:release web -a ${{secrets.HEROKU_APP_NAME}}
+
+-Ahora hacemos commit y push a GitHub.
+-Ya tenemos desplegada nuestra app automatica con docker y heroku. en heroku nuestra app, settings y en domains nos dara la URL para ver nuestra web.
+https://master-front-lemoncode-heroku.herokuapp.com/
 
 3. Deplegar aplicación front de forma automática en Vercel.
 
@@ -111,8 +143,13 @@ https://master-front-lemoncode-heroku.herokuapp.com/
 
 4. Desplegar aplicación front con Docker y AWS.
 
+-Vamos a Launch an instace y ponemos un nombre ejemplo deploy-to-aws, elegimos una maquina.
+-En key pair (login) hay que elegir una opcion, la default.
+-Marcamos la opcion Allow HTTP traffic from the internet.
+-Hacemos click en launch instance. Ya tenemos la maquina creada.
+-Vemos que se esta desplegando, una vez levantada podremos darle a connect, para conectarnos a ella.
+-Nos llevará al terminal de dicha maquina.
 
-
-
-
-5. Desplegar back y front en un mismo dyno en Heroku.
+-Tenemos que instalar docker en esta maquina `sudo yum update -y`, `sudo amazon-linux-extras install docker` luego le damos a y para que lo instale. Ahora arrancamos el servicio de docker `sudo service docker start`. Ya lo tenemos instalado.
+-Esto seria para una imagen publica, no necesitaria de login en docker. `sudo docker run --name my-app-container -rm -d -p 80:8083`, Puse el 8083 porque es el que use en mi variable de entorno en dockerfile y el 80 es el que elegimos en esta maquina. ahora se la descarga y crea el contenedor.
+-Ahora aws nos da la ip publica ejemplo http://ec2-52-47-182-138.eu-west-3.compute.amazonaws.com/. Este enlace no funciona actualmente, es para ver un ejemplo.
