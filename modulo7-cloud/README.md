@@ -136,10 +136,36 @@ https://master-front-lemoncode-heroku.herokuapp.com/
 
 3. Deplegar aplicación front de forma automática en Vercel.
 
+-Vamos a import Git repository, le damos a cotinue con GitHub, importamos nuestro proyecto y hacemos click en deploy.
+-Si nos vamos a Overview en vercel, veremos nuestro proyecto.
+-Desde nuestra terminal instalamos la CLI de vercel `npm i -g vercel` lo instalé de forma global por eso el -g.
+-Ahora hacemos login desde la terminal, `vercel login`, conectamos con GitHub al terminar te dira. CLI Login Success.
+-Desde la terminal `vercel link`, decimos que si. y el nombre del proyecto en vercel. Esto genero la  carpeta .vercel y dentro un project.json . En su interiro nos da dos Id.
+-Con los dos Id, tenemos que ir nuestra app en GitHub y crear 3 secretos. VERCEL_PROJECT_ID, VERCEL_ORG_ID esos dos nos lo ha proporcionado project.json y el tercero seria VERCEL_TOKEN. Que lo creamos desde vercel, settings, Tokens y lo creamos y lo ponemos en nuestro secreto en GitHub. Ahora podemos borrar la carpeta .vercel, aunque automaticamente se añadio al .gitignore para no subirlo sin querer a GitHub.
+-En nuestro proyecto en la carpeta .github/workflows creamos nuestro cd-vercel.yml y hacemos lo siguiente:
 
+name: CD Vercel workflow
 
+on:
+  push:
+    branches:
+      - master
+env:
+  VERCEL_PROJECT_ID: ${{secrets.VERCEL_PROJECT_ID}}
+  VERCEL_ORG_ID: ${{secrets.VERCEL_ORG_ID}}
 
+jobs:
+  vercel-cd:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Deploy
+        run: vercel -t ${{secrets.VERCEL_TOKEN}}
 
+-Ahora si la build la teneis configurada para que este en la carpeta public o directorio raiz no hay que tocar nada si lo teneis en dist, haz lo siguiente en vercel a partado de build & development settings en output directory ponemos dist y listo.
+-Hacemos `commit` y `push` Cuando termine desde vercel Deployment veremos que nos da la url para ver nuestra app.
+https://master-front-deploy-vercel-franlop7.vercel.app/
 
 4. Desplegar aplicación front con Docker y AWS.
 
