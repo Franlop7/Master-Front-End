@@ -14,3 +14,21 @@ usuario logado.
 ### Footer:
 - Texto de la compañía, al final de la página (aunque el
 contenido no ocupe todo el alto)
+
+Diseño Desktop (a partir de 768px).
+
+Al hacer scroll no perdemos la barra de navegación.
+
+Diseño Mobile/Tablet (hasta 768px de ancho).
+
+Al hacer scroll no perdemos la barra de navegación.
+
+## Consideraciones
+
+### No perder en ninguna resolución la barra de navegación al hacer scroll.
+### En resoluciones pequeñas (hasta 768px de ancho):
+### Contenido a ocultar:
+- Barra superior con input de búsqueda y nombre de usuario
+- Título del menú
+### Cambiar menú a la parte superior, bajo el header.
+### Cambiar la organización del contenido principal para visualizarlo sin problemas
