@@ -32,3 +32,10 @@ Al hacer scroll no perdemos la barra de navegación.
 - Título del menú
 ### Cambiar menú a la parte superior, bajo el header.
 ### Cambiar la organización del contenido principal para visualizarlo sin problemas
+
+### Libertad de diseño y creatividad:
+- Tema
+- Contenido
+- Breakpoints
+- Colores
+- Etc...
