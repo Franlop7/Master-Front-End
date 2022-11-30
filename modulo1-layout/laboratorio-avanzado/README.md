@@ -1,6 +1,6 @@
 # Modulo 1 - Layout - Avanzado
 
-## Se trata de una prueba de maquetación.
+## Se trata de una prueba de maquetación
 
 - Diseño Desktop (ancho 1280px mínimo)
 - Cabecera siempre visible
