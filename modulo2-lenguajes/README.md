@@ -1,6 +1,6 @@
 # Modulo 2 - Lenguajes
 
-1. Array operations
+## 1. Array operations
 
 ### Head 
 
