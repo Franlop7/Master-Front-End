@@ -12,5 +12,6 @@ npm install
 ```bash
 npm run start
 ```
-Username es admin
-Password es test
+Username: admin
+
+Password: test
