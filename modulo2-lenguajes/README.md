@@ -1,4 +1,4 @@
-# Modulo 2 - Lenguajes
+# Módulo 2 - Lenguajes
 
 ## 1. Array operations
 
