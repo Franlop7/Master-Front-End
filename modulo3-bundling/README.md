@@ -1,4 +1,4 @@
-# Modulo 3 - Bundling
+# Módulo 3 - Bundling
 
 ## Básico
 
