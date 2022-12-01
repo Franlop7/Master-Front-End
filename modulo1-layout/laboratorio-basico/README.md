@@ -1,4 +1,4 @@
-# Modulo 1 - Layout - Básico
+# Módulo 1 - Layout - Básico
 
 ## Ejercicio 1
 Crear una paleta de colores dinámica.

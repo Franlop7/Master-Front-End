@@ -1,4 +1,4 @@
-# Modulo 1 - Layout - Extra
+# Módulo 1 - Layout - Extra
 
 ## Vamos a crear un Layout para una aplicación, que contendrá:
 

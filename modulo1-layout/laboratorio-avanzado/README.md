@@ -1,4 +1,4 @@
-# Modulo 1 - Layout - Avanzado
+# Módulo 1 - Layout - Avanzado
 
 ## Se trata de una prueba de maquetación
 
