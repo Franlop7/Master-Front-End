@@ -1,4 +1,3 @@
-
 ## How to run app
 
 - Install dependencies npm install
@@ -7,10 +6,10 @@
 npm install
 ```
 
-- Run tge project npm run start
+- Run the project npm start
 
 ```bash
-npm run start
+npm start
 ```
 Username: admin
 
