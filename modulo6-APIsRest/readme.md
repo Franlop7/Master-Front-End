@@ -20,3 +20,11 @@ https://github.com/typicode/json-server
     * Podéis inicializar este nuevo campo a vacío para cada personaje.
 * Reemplazar los endpoints para que apunten al json-server.
 * El usuario puede editar y guardar el campos bestSentences.
+
+## Opcional
+
+* Implementar la misma aplicación (del ejercicio 1) pero tirando de la API de GraphQL  
+
+https://rickandmortyapi.com/documentation/#graphql  
+
+https://rickandmortyapi.com/graphql/
