@@ -29,7 +29,7 @@ https://franlop7.github.io/master-front-gh-pages/
 -`git add .` para trackear todos los ficheros.
 -`git commit -m "initial commit"`.
 -`git push -u origin main` , si teneis la rama master pues cambiáis main por master.
--Ya estaria todos los ficheros subidos al repo.
+-Ahora tenemos todos los ficheros subidos al repo.
 -instalamos https://github.com/tschaub/gh-pages es una CLI y nos permite publicar a la rama gh-pages, si la rama no esta creada la crea automaticamente. Todo mas simple. `npm install gh-pages -D`.
 -Abrimos el package.json de nuestro proyecto y añadimos en los scripts: 
 "build:dev": "npm run clean && webpack --config ./config/webpack/dev.js",
