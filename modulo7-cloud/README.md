@@ -116,7 +116,9 @@ copiamos https://github.com/heroku/heroku-buildpack-static.git y lo pegamos en a
 
 Ahora subiremos los fichero al repositorio de despliegue que nos proporciono heroku git URL ...
 
-Ahora nos clonamos ese nuevo repositoria que nos creo heroku. Para ello creamos una nueva carpeta y la abrimos con nuestro editor te texto, en mi caso vscode. Desde la consola hacemos `git clone URL .` que nos proporciono heroku.Importante el espacio . Después de la URL. Para que genere la carpeta de .git.
+Ahora nos clonamos ese nuevo repositoria que nos creo heroku. Para ello creamos una nueva carpeta y la abrimos con nuestro editor te texto, en mi caso vscode. Desde la consola hacemos `git clone URL .` que nos proporciono heroku. Importante el espacio . Después de la URL. 
+
+Para que genere la carpeta de .git.
 
 Instalamos heroku CLI de forma global. `npm i -g heroku`.
 
