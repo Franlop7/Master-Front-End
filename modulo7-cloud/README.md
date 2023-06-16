@@ -11,11 +11,15 @@
 Tenemos o creamos un repo en Github, donde tenemos nuestra app y queremos hacer el despliegue.
 Desde la rama main/master creamos una rama llamada, por ejemplo: gh-pages. Es el nombre por defecto.
 
--Ejecutamos la compilación de producción del proyecto.
--Eliminamos todos los archivos, menos los del interior de la carpeta  dist. lo que hacemos es mover el contenido de dist a la raiz y borramos dist.
--Ahora publicamos en la rama gh-pages.Con un commit y push.
--Github automaticamente y por crear la rama con el nombre gh-pages, gracias a jekyll creara un servidor similar a express y se encarga de publicar los ficheros estaticos.
--Si entramos en Actions podemos ver el despliegue y en el deploy nos da la url para acceder a nuestra app desplegada.
+Ejecutamos la compilación de producción del proyecto.
+
+Eliminamos todos los archivos, menos los del interior de la carpeta  dist. lo que hacemos es mover el contenido de dist a la raiz y borramos dist.
+
+Ahora publicamos en la rama gh-pages.Con un commit y push.
+
+Github automaticamente y por crear la rama con el nombre gh-pages, gracias a jekyll creara un servidor similar a express y se encarga de publicar los ficheros estaticos.
+
+Si entramos en Actions podemos ver el despliegue y en el deploy nos da la url para acceder a nuestra app desplegada.
 https://franlop7.github.io/master-front-gh-pages/
 
 2. Automatizar el proceso de despliegue:
