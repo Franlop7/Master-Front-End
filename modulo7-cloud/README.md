@@ -33,7 +33,7 @@ Ahora seguimos los comandos que nos proporciono github.
 
 Dentro de nuestro proyecto en local, abrimos consola y inicializamos nuestro repo en local `git init`.
 
-Ahora linkamos nuestro fichero local con nuestro repo de github. `git remote add origin ...` copiamos lo que nos puse github en nuestro repo.
+Ahora linkamos nuestro fichero local con nuestro repo de github. `git remote add origin ...` copiamos lo que nos puso github en nuestro repo.
 
 `git add .` para trackear todos los ficheros.
 
@@ -108,28 +108,44 @@ Ahora en Github Actions empezara la magia. https://franlop7.github.io/master-fro
 
 1. Desplegar la página en un dyno gratuito de heroku, usando despliegue por git.
 
--Una vez dentro de heroku, le damos a New y create new app. Ponemos un nombre de nuestra app y la region.
--En https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-static podemos instalar esta u otra opcion la que querais.
+Una vez dentro de heroku, le damos a New y create new app. Ponemos un nombre de nuestra app y la region.
+
+En https://elements.heroku.com/buildpacks/heroku/heroku-buildpack-static podemos instalar esta u otra opcion la que querais.
+
 copiamos https://github.com/heroku/heroku-buildpack-static.git y lo pegamos en add buildpack en heroku. Este sera nuestro servidor.
--Ahora subiremos los fichero al repositorio de despliegue que nos proporciono heroku git URL ...
--Ahora nos clonamos ese nuevo repositoria que nos creo heroku. Para ello creamos una nueva carpeta y la abrimos con nuestro editor te texto, en mi caso vscode. Desde la consola hacemos `git clone URL .` que nos proporciono heroku.Importante el espacio . Después de la URL. Para que genere la carpeta de .git.
--Instalamos heroku CLI de forma global. `npm i -g heroku`.
--Una vez instalado, en consola `heroku login`. Pulsa cualquier tecla, se abrirá el navegador y solo tenemos que hacer login. En consola saldrá que ya estamos logged.
--Ahora solo tenemos que copiar nuestros ficheros compilados, los de nuestra app y lo pegamos en la carpeta que creamos anteriormente.
--Creamos un fichero de configuracion static.json en la raiz. para indicarle la ruta donde tiene que buscar el index.htm de nuestra app. en static.json añadimos lo siguiente: `{ "root": "./" }`.
--Ahora solo queda hacer `git add .`, `git commit -u "add static files"`, `git push heroku master`.
--Ya tenemos nuestra app desplegada. 
+
+Ahora subiremos los fichero al repositorio de despliegue que nos proporciono heroku git URL ...
+
+Ahora nos clonamos ese nuevo repositoria que nos creo heroku. Para ello creamos una nueva carpeta y la abrimos con nuestro editor te texto, en mi caso vscode. Desde la consola hacemos `git clone URL .` que nos proporciono heroku.Importante el espacio . Después de la URL. Para que genere la carpeta de .git.
+
+Instalamos heroku CLI de forma global. `npm i -g heroku`.
+
+Una vez instalado, en consola `heroku login`. Pulsa cualquier tecla, se abrirá el navegador y solo tenemos que hacer login. En consola saldrá que ya estamos logged.
+
+Ahora solo tenemos que copiar nuestros ficheros compilados, los de nuestra app y lo pegamos en la carpeta que creamos anteriormente.
+
+Creamos un fichero de configuracion static.json en la raiz. para indicarle la ruta donde tiene que buscar el index.htm de nuestra app. en static.json añadimos lo siguiente: `{ "root": "./" }`.
+
+Ahora solo queda hacer `git add .`, `git commit -u "add static files"`, `git push heroku master`.
+
+Ya tenemos nuestra app desplegada. 
 
 2. Desplegar aplicación front de forma automática + Docker en Heroku.
 
--Creamos un nuevo repositorio en GitHub y hacemos todos los pasos ya visto en ejercicios anteriores.
--Vamos a Heroku y creamos una nueva app
--Hacemos login en Heroku desde nuesta consola `heroku login` y `heroku authorizations:create -d name-app`, se puede poner el mismo nombre que le diste a la app al crearla en Heroku en el paso 2, pero no es relevante. Nos dara un Token.
--Copiamos ese Token y nos vamos a nuestro repositorio en GitHub a Settings, Secrets y Actions. Creamos uno nuevo le llamamos por ejemplo HEROKU_API_KEY y pegamos el Token. Creamos un nuevo secreto llamado HEROKU_APP_NAME y en secret ponemos el nombre de nuestra app creada en Heroku.
+Creamos un nuevo repositorio en GitHub y hacemos todos los pasos ya visto en ejercicios anteriores.
+
+Vamos a Heroku y creamos una nueva app.
+
+Hacemos login en Heroku desde nuesta consola `heroku login` y `heroku authorizations:create -d name-app`, se puede poner el mismo nombre que le diste a la app al crearla en Heroku en el paso 2, pero no es relevante. Nos dara un Token.
+
+Copiamos ese Token y nos vamos a nuestro repositorio en GitHub a Settings, Secrets y Actions.
+
+Creamos uno nuevo le llamamos por ejemplo HEROKU_API_KEY y pegamos el Token. Creamos un nuevo secreto llamado HEROKU_APP_NAME y en secret ponemos el nombre de nuestra app creada en Heroku.
 
 
--En nuestro fichero cd.yml que esta dentro de .github/workflows. tiene que quedar tal que así.
+En nuestro fichero cd.yml que esta dentro de .github/workflows. tiene que quedar tal que así.
 
+```yml
 name: Continuos Deployment workflow
 
 on:
@@ -155,21 +171,37 @@ jobs:
         run: docker push ${{env.IMAGE_NAME}}
       - name: Release
         run: heroku container:release web -a ${{secrets.HEROKU_APP_NAME}}
+```
 
--Ahora hacemos commit y push a GitHub.
--Ya tenemos desplegada nuestra app automatica con docker y heroku. en heroku nuestra app, settings y en domains nos dara la URL para ver nuestra web.
+Ahora hacemos commit y push a GitHub.
+
+Ya tenemos desplegada nuestra app automatica con docker y heroku. en heroku nuestra app, settings y en domains nos dara la URL para ver nuestra web.
+
 https://master-front-lemoncode-heroku.herokuapp.com/
 
 3. Deplegar aplicación front de forma automática en Vercel.
 
--Vamos a import Git repository, le damos a cotinue con GitHub, importamos nuestro proyecto y hacemos click en deploy.
--Si nos vamos a Overview en vercel, veremos nuestro proyecto.
--Desde nuestra terminal instalamos la CLI de vercel `npm i -g vercel` lo instalé de forma global por eso el -g.
--Ahora hacemos login desde la terminal, `vercel login`, conectamos con GitHub al terminar te dira. CLI Login Success.
--Desde la terminal `vercel link`, decimos que si. y el nombre del proyecto en vercel. Esto genero la  carpeta .vercel y dentro un project.json . En su interiro nos da dos Id.
--Con los dos Id, tenemos que ir nuestra app en GitHub y crear 3 secretos. VERCEL_PROJECT_ID, VERCEL_ORG_ID esos dos nos lo ha proporcionado project.json y el tercero seria VERCEL_TOKEN. Que lo creamos desde vercel, settings, Tokens y lo creamos y lo ponemos en nuestro secreto en GitHub. Ahora podemos borrar la carpeta .vercel, aunque automaticamente se añadio al .gitignore para no subirlo sin querer a GitHub.
--En nuestro proyecto en la carpeta .github/workflows creamos nuestro cd-vercel.yml y hacemos lo siguiente:
+Vamos a import Git repository, le damos a cotinue con GitHub, importamos nuestro proyecto y hacemos click en deploy.
 
+Si nos vamos a Overview en vercel, veremos nuestro proyecto.
+
+Desde nuestra terminal instalamos la CLI de vercel `npm i -g vercel` lo instalé de forma global por eso el -g.
+
+Ahora hacemos login desde la terminal, `vercel login`, conectamos con GitHub al terminar te dira. CLI Login Success.
+
+Desde la terminal `vercel link`. decimos, si. El nombre del proyecto en vercel.
+
+Esto genero la  carpeta .vercel y dentro un project.json . En su interiro nos da dos Id.
+
+Con los dos Id, tenemos que ir a nuestra app en GitHub y crear 3 secretos. VERCEL_PROJECT_ID, VERCEL_ORG_ID esos dos nos lo ha proporcionado project.json y el tercero seria VERCEL_TOKEN. 
+
+Lo creamos desde vercel, settings, Tokens y lo creamos y lo ponemos en nuestro secreto en GitHub.
+
+Ahora podemos borrar la carpeta .vercel, aunque automáticamente se añadio al .gitignore para no subirlo sin querer a GitHub.
+
+En nuestro proyecto en la carpeta .github/workflows creamos nuestro cd-vercel.yml y hacemos lo siguiente:
+
+```yml
 name: CD Vercel workflow
 
 on:
@@ -188,20 +220,35 @@ jobs:
         uses: actions/checkout@v3
       - name: Deploy
         run: vercel -t ${{secrets.VERCEL_TOKEN}}
+```
 
--Ahora si la build la teneis configurada para que este en la carpeta public o directorio raiz no hay que tocar nada si lo teneis en dist, haz lo siguiente en vercel a partado de build & development settings en output directory ponemos dist y listo.
--Hacemos `commit` y `push` Cuando termine desde vercel Deployment veremos que nos da la url para ver nuestra app.
+Ahora si la build la tenéis configurada, para que este en la carpeta public o directorio raiz, no hay que tocar nada. Si lo teneis en dist, haz lo siguiente en vercel apartado de build & development settings en output directory ponemos dist y listo.
+
+Hacemos `commit` y `push` Cuando termine desde vercel Deployment veremos que nos da la url para ver nuestra app.
 https://master-front-deploy-vercel-franlop7.vercel.app/
 
 4. Desplegar aplicación front con Docker y AWS.
 
--Vamos a Launch an instace y ponemos un nombre ejemplo deploy-to-aws, elegimos una maquina.
--En key pair (login) hay que elegir una opcion, la default.
--Marcamos la opcion Allow HTTP traffic from the internet.
--Hacemos click en launch instance. Ya tenemos la maquina creada.
--Vemos que se esta desplegando, una vez levantada podremos darle a connect, para conectarnos a ella.
--Nos llevará al terminal de dicha maquina.
+Vamos a Launch an instace y ponemos un nombre ejemplo deploy-to-aws, elegimos una maquina.
 
--Tenemos que instalar docker en esta maquina `sudo yum update -y`, `sudo amazon-linux-extras install docker` luego le damos a y para que lo instale. Ahora arrancamos el servicio de docker `sudo service docker start`. Ya lo tenemos instalado.
--Esto seria para una imagen publica, no necesitaria de login en docker. `sudo docker run --name my-app-container -rm -d -p 80:8083`, Puse el 8083 porque es el que use en mi variable de entorno en dockerfile y el 80 es el que elegimos en esta maquina. ahora se la descarga y crea el contenedor.
--Ahora aws nos da la ip publica ejemplo http://ec2-52-47-182-138.eu-west-3.compute.amazonaws.com/. Este enlace no funciona actualmente, es para ver un ejemplo.
+En key pair (login) hay que elegir una opcion, la default.
+
+Marcamos la opcion Allow HTTP traffic from the internet.
+
+Hacemos click en launch instance. Ya tenemos la maquina creada.
+
+Vemos que se esta desplegando, una vez levantada podremos darle a connect, para conectarnos a ella.
+
+Nos llevará al terminal de dicha maquina.
+
+Tenemos que instalar docker en esta maquina `sudo yum update -y`, `sudo amazon-linux-extras install docker` luego le damos a y para que lo instale. 
+
+Ahora arrancamos el servicio de docker `sudo service docker start`. Ya lo tenemos instalado.
+
+Esto seria para una imagen publica, no necesitaria de login en docker. `sudo docker run --name my-app-container -rm -d -p 80:8083`.
+
+Puse el 8083 porque es el que use en mi variable de entorno en dockerfile y el 80 es el que elegimos en esta maquina. ahora la descarga y crea el contenedor.
+
+Ahora aws nos da la ip publica ejemplo http://ec2-52-47-182-138.eu-west-3.compute.amazonaws.com/.
+
+Este enlace no funciona actualmente, es por ver un ejemplo de URL.
