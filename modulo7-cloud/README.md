@@ -52,15 +52,22 @@ Abrimos el package.json de nuestro proyecto y añadimos en los scripts:
 "deploy": "gh-pages -d dist"
 ```
 
-Para automatizar todo el proceso con Github Actions, Creamos  en la raiz de nuestro proyecto una carpeta llamada .github , dentro de ella otra  carpeta llamada workflows y dentro podemos crear todos los archivos .yml que queramos crearemos el cd.yml.
+Para automatizar todo el proceso con Github Actions, Creamos  en la raiz de nuestro proyecto una carpeta llamada .github , dentro de ella otra carpeta llamada workflows y en su interior podemos crear todos los archivos .yml que queramos crearemos, ejemplo: cd.yml.
 
--Tenemos que generar claves SSH para que la maquina linux, que es quien se encargue de hacer todo automatizado tenga permisos para poder hacer un push a la rama. para generar las claves SSH publica y privada. Desde bash hacemos `ssh-keygen -m PEM -t rsa -C "cd-user@my-app.com"` , el correo podemos poner el que sea. ahora le pide la ruta donde guardar las claves ponemos en la raiz del proyecto, ./id_rsa. Luego estos ficheros se borran para no suibir esas claves. Pedira poner password pero no es necesario poner ninguna. y se generan dos archivso id_rsa y id_rsa.pub .
--Copiamos la clave que generamos dentro del id_rsa.pub y en nuestro repo vamos a settings, en la parte izquerdad en security Deploy keys. Hacemos click en add deploy key, ponemos un nombre ejemplo SSH_PUBLIC_KEY y en key pegamos toda la clave que empieza por ssh-rsa ... . Hacemos check en Allow write access es muy necesario para poder hacer push y a add key. Borramos el ficher id_rsa.pub.
--La clave privada id_rsa copiamos el contenido y nos vamos a settings en nuestro repo, Secrets y Actions. New repository secret hacemos click. En name ponemos ejemplo SSH_PRIVATE_KEY y en secret pegamos la clave. add secret. Borramos el fichero id_rsa.
+Tenemos que generar claves SSH para que la maquina linux, que es quien se encargue de hacer todo automatizado, tenga permisos para poder hacer un push a la rama. Para generar las claves SSH publica y privada. Desde bash hacemos `ssh-keygen -m PEM -t rsa -C "cd-user@my-app.com"` , el correo podemos poner el que sea.
+
+Ahora le pide la ruta donde guardar las claves ponemos en la raiz del proyecto, ./id_rsa. Luego estos ficheros se borran para no suibir esas claves. 
+
+Pedira poner password pero no es necesario poner ninguna. y se generan dos archivso id_rsa y id_rsa.pub .
+
+Copiamos la clave que generamos dentro del id_rsa.pub y en nuestro repo vamos a settings, en la parte izquerdad en security Deploy keys. Hacemos click en add deploy key, ponemos un nombre ejemplo SSH_PUBLIC_KEY y en key pegamos toda la clave que empieza por ssh-rsa ... . Hacemos check en Allow write access es muy necesario para poder hacer push y a add key. Borramos el ficher id_rsa.pub.
+
+La clave privada id_rsa copiamos el contenido y nos vamos a settings en nuestro repo, Secrets y Actions. New repository secret hacemos click. En name ponemos ejemplo SSH_PRIVATE_KEY y en secret pegamos la clave. add secret. Borramos el fichero id_rsa.
 
 
 -En el archivo cd.yml copiamos esto.
 
+```yml
 name: Continuos Deployment workflow
 
 on:
@@ -90,10 +97,11 @@ jobs:
       - name: Deploy
         run: npm run deploy -- -r git@github.com:Franlop7/master-front-pages-auto.git
 
--Solo quedaría hacer un `git add .`, `git commit -m "config ssh keys"` y `git push` .
--Ahora en Github Actions empezara la magia. https://franlop7.github.io/master-front-pages-auto/
- 
+ ```
 
+Solo quedaría hacer un `git add .`, `git commit -m "config ssh keys"` y `git push` .
+
+Ahora en Github Actions empezara la magia. https://franlop7.github.io/master-front-pages-auto/
 
 
 # Opcional
