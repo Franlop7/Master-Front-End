@@ -4,9 +4,9 @@
 
 1. Desplegar en Github Pages de forma manual:
 
-    Tenemos un repo en Github.
-    Queremos desplegar una app.
-    Realizar el despliegue manual.
+  - Tenemos un repo en Github.
+  - Queremos desplegar una app.
+  - Realizar el despliegue manual.
 
 Tenemos o creamos un repo en Github, donde tenemos nuestra app y queremos hacer el despliegue.
 Desde la rama main/master creamos una rama llamada, por ejemplo: gh-pages. Es el nombre por defecto.
