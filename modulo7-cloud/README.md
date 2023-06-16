@@ -24,22 +24,35 @@ https://franlop7.github.io/master-front-gh-pages/
 
 2. Automatizar el proceso de despliegue:
 
-    Queremos que cada vez que se haga un merge a master se dispare un flujo de build y despliegue.
-    Usar Github Actions para esto.
+  - Queremos que cada vez que se haga un merge a master se dispare un flujo de build y despliegue.
+  - Usar Github Actions para esto.
 
--Primero de todo, creamos nuestro repositorio. Ejemplo: master-front-pages-auto, lo dejamos en publico.
--Ahora seguimos los comandos que nos proporciono github.
--Dentro de nuestro proyecto en local, abrimos consola y inicializamos nuestro repo en local `git init`.
--Ahora linkamos nuestro fichero local con nuestro repo de github. `git remote add origin ...` copiamos lo que nos puse github en nuestro repo.
--`git add .` para trackear todos los ficheros.
--`git commit -m "initial commit"`.
--`git push -u origin main` , si teneis la rama master pues cambiáis main por master.
--Ahora tenemos todos los ficheros subidos al repo.
--instalamos https://github.com/tschaub/gh-pages es una CLI y nos permite publicar a la rama gh-pages, si la rama no esta creada la crea automaticamente. Todo mas simple. `npm install gh-pages -D`.
--Abrimos el package.json de nuestro proyecto y añadimos en los scripts: 
+Primero de todo, creamos nuestro repositorio. Ejemplo: master-front-pages-auto, lo dejamos en publico.
+
+Ahora seguimos los comandos que nos proporciono github.
+
+Dentro de nuestro proyecto en local, abrimos consola y inicializamos nuestro repo en local `git init`.
+
+Ahora linkamos nuestro fichero local con nuestro repo de github. `git remote add origin ...` copiamos lo que nos puse github en nuestro repo.
+
+`git add .` para trackear todos los ficheros.
+
+`git commit -m "initial commit"`.
+
+`git push -u origin main` , si teneis la rama master pues cambiáis main por master.
+
+Ahora tenemos todos los ficheros subidos al repo.
+
+instalamos https://github.com/tschaub/gh-pages es una CLI y nos permite publicar a la rama gh-pages, si la rama no esta creada la crea automaticamente. Todo mas simple. `npm install gh-pages -D`.
+
+Abrimos el package.json de nuestro proyecto y añadimos en los scripts:
+
+```json
 "build:dev": "npm run clean && webpack --config ./config/webpack/dev.js",
 "deploy": "gh-pages -d dist"
--Para automatizar todo el proceso con Github Actions, Creamos  en la raiz de nuestro proyecto una carpeta llamada .github , dentro de ella otra  carpeta llamada workflows y dentro podemos crear todos los archivos .yml que queramos crearemos el cd.yml.
+```
+
+Para automatizar todo el proceso con Github Actions, Creamos  en la raiz de nuestro proyecto una carpeta llamada .github , dentro de ella otra  carpeta llamada workflows y dentro podemos crear todos los archivos .yml que queramos crearemos el cd.yml.
 
 -Tenemos que generar claves SSH para que la maquina linux, que es quien se encargue de hacer todo automatizado tenga permisos para poder hacer un push a la rama. para generar las claves SSH publica y privada. Desde bash hacemos `ssh-keygen -m PEM -t rsa -C "cd-user@my-app.com"` , el correo podemos poner el que sea. ahora le pide la ruta donde guardar las claves ponemos en la raiz del proyecto, ./id_rsa. Luego estos ficheros se borran para no suibir esas claves. Pedira poner password pero no es necesario poner ninguna. y se generan dos archivso id_rsa y id_rsa.pub .
 -Copiamos la clave que generamos dentro del id_rsa.pub y en nuestro repo vamos a settings, en la parte izquerdad en security Deploy keys. Hacemos click en add deploy key, ponemos un nombre ejemplo SSH_PUBLIC_KEY y en key pegamos toda la clave que empieza por ssh-rsa ... . Hacemos check en Allow write access es muy necesario para poder hacer push y a add key. Borramos el ficher id_rsa.pub.
