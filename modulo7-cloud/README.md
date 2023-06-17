@@ -13,11 +13,11 @@ Desde la rama main/master creamos una rama llamada, por ejemplo: gh-pages. Es el
 
 Ejecutamos la compilación de producción del proyecto.
 
-Eliminamos todos los archivos, menos los del interior de la carpeta  dist. lo que hacemos es mover el contenido de dist a la raiz y borramos dist.
+Eliminamos todos los archivos, menos los del interior de la carpeta  dist. Lo que hacemos es mover el contenido de dist a la raíz y borramos dist.
 
-Ahora publicamos en la rama gh-pages.Con un commit y push.
+Ahora publicamos en la rama gh-pages. Con un commit y push.
 
-Github automaticamente y por crear la rama con el nombre gh-pages, gracias a jekyll creara un servidor similar a express y se encarga de publicar los ficheros estaticos.
+Github automáticamente y por crear la rama con el nombre gh-pages, gracias a jekyll creará un servidor similar a express y se encarga de publicar los ficheros estáticos.
 
 Si entramos en Actions podemos ver el despliegue y en el deploy nos da la url para acceder a nuestra app desplegada.
 https://franlop7.github.io/master-front-gh-pages/
