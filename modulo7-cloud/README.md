@@ -19,7 +19,7 @@ Ahora publicamos en la rama gh-pages. Con un commit y push.
 
 Github automáticamente y por crear la rama con el nombre gh-pages, gracias a jekyll creará un servidor similar a express y se encarga de publicar los ficheros estáticos.
 
-Si entramos en Actions podemos ver el despliegue y en el deploy nos da la url para acceder a nuestra app desplegada.
+Entramos en Actions, podemos ver el despliegue y en deploy nos da la url para acceder a nuestra app desplegada.
 https://franlop7.github.io/master-front-gh-pages/
 
 2. Automatizar el proceso de despliegue:
@@ -27,23 +27,23 @@ https://franlop7.github.io/master-front-gh-pages/
   - Queremos que cada vez que se haga un merge a master se dispare un flujo de build y despliegue.
   - Usar Github Actions para esto.
 
-Primero de todo, creamos nuestro repositorio. Ejemplo: master-front-pages-auto, lo dejamos en publico.
+Primero de todo, creamos nuestro repositorio. Ejemplo: master-front-pages-auto, lo dejamos en público.
 
-Ahora seguimos los comandos que nos proporciono github.
+Ahora seguimos los comandos que nos proporcionó github.
 
-Dentro de nuestro proyecto en local, abrimos consola y inicializamos nuestro repo en local `git init`.
+Dentro de nuestro proyecto en local, abrimos la consola e inicializamos nuestro repo en local `git init`.
 
-Ahora linkamos nuestro fichero local con nuestro repo de github. `git remote add origin ...` copiamos lo que nos puso github en nuestro repo.
+Ahora linkeamos nuestro fichero local con nuestro repo de github. `git remote add origin ...` copiamos lo que nos puso github en nuestro repo.
 
 `git add .` para trackear todos los ficheros.
 
 `git commit -m "initial commit"`.
 
-`git push -u origin main` , si teneis la rama master pues cambiáis main por master.
+`git push -u origin main` , si teneis la rama master, pues cambiáis main por master.
 
 Ahora tenemos todos los ficheros subidos al repo.
 
-instalamos https://github.com/tschaub/gh-pages es una CLI y nos permite publicar a la rama gh-pages, si la rama no esta creada la crea automaticamente. Todo mas simple. `npm install gh-pages -D`.
+instalamos https://github.com/tschaub/gh-pages es una CLI y nos permite publicar a la rama gh-pages, si la rama no está creada la crea automáticamente. Todo más simple. `npm install gh-pages -D`.
 
 Abrimos el package.json de nuestro proyecto y añadimos en los scripts:
 
@@ -52,7 +52,7 @@ Abrimos el package.json de nuestro proyecto y añadimos en los scripts:
 "deploy": "gh-pages -d dist"
 ```
 
-Para automatizar todo el proceso con Github Actions, Creamos  en la raiz de nuestro proyecto una carpeta llamada .github , dentro de ella otra carpeta llamada workflows y en su interior podemos crear todos los archivos .yml que queramos crearemos, ejemplo: cd.yml.
+Para automatizar todo el proceso con Github Actions, Creamos en la raiz de nuestro proyecto una carpeta llamada . Github, dentro de ella otra carpeta llamada workflows y en su interior podemos crear todos los archivos .yml que necesitemos. Ejemplo: cd.yml.
 
 Tenemos que generar claves SSH para que la maquina linux, que es quien se encargue de hacer todo automatizado, tenga permisos para poder hacer un push a la rama. Para generar las claves SSH publica y privada. Desde bash hacemos `ssh-keygen -m PEM -t rsa -C "cd-user@my-app.com"` , el correo podemos poner el que sea.
 
