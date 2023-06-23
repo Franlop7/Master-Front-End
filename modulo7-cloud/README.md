@@ -54,7 +54,7 @@ Abrimos el package.json de nuestro proyecto y añadimos en los scripts:
 
 Para automatizar todo el proceso con Github Actions, Creamos en la raiz de nuestro proyecto una carpeta llamada . Github, dentro de ella otra carpeta llamada workflows y en su interior podemos crear todos los archivos .yml que necesitemos. Ejemplo: cd.yml.
 
-Tenemos que generar claves SSH para que la maquina linux, que es quien se encargue de hacer todo automatizado, tenga permisos para poder hacer un push a la rama. Para generar las claves SSH publica y privada. Desde bash hacemos `ssh-keygen -m PEM -t rsa -C "cd-user@my-app.com"` , el correo podemos poner el que sea.
+Tenemos que generar claves SSH para que la máquina linux, que es quien se encargue de hacer todo automatizado, tenga permisos para poder hacer un push a la rama. Para generar las claves SSH pública y privada. Desde bash hacemos `ssh-keygen -m PEM -t rsa -C "cd-user@my-app.com"`, Se puede poner cualquier correo.
 
 Ahora le pide la ruta donde guardar las claves ponemos en la raiz del proyecto, ./id_rsa. Luego estos ficheros se borran para no suibir esas claves. 
 
