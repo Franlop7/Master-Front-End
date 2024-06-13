@@ -32,23 +32,24 @@ class SlothMachine {
 
   play(): void {
     this.coinsCount++;
-    for (let i = 0; i < 3; i++) {
-      if (!getRandomBoolean()) {
-        return console.log("Good luck  next time!!");
-      }
-
-      const result = this.coinsCount.toString();
-      console.log("Congratulations!!!. You won ", result, " coins!!");
-      this.coinsCount = 0;
-    }
+    const boolean1 = getRandomBoolean();
+    const boolean2 = getRandomBoolean();
+    const boolean3 = getRandomBoolean();
+    
+    if (boolean1 && boolean2 && boolean3) {
+      console.log(`Congratulations!!!. You won ${this.coinsCount} coins!!`);
+      this.coinsCount = 0; // Reiniciar el contador de monedas
+    } else {
+      console.log("Good luck next time!!);
+    }  
   }
 }
 
 
 const machine1 = new SlothMachine();
-machine1.play(); // "Good luck next time!!"
-machine1.play(); // "Good luck next time!!"
-machine1.play(); // "Congratulations!!!. You won 3 coins!!"
-machine1.play(); // "Good luck next time!!"
-machine1.play(); // "Congratulations!!!. You won 2 coins!!"
+machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
+machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
+machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
+machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
+machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
 
