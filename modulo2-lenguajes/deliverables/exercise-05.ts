@@ -19,7 +19,7 @@ console.log("************** DELIVERABLE 05 *********************");
 
 // Ejemplo de uso
 
-const getRandomBoolean = () => {
+const getRandomBoolean = (): boolean => {
   return Math.random() >= 0.5;
 };
 
@@ -35,16 +35,15 @@ class SlothMachine {
     const boolean1 = getRandomBoolean();
     const boolean2 = getRandomBoolean();
     const boolean3 = getRandomBoolean();
-    
+
     if (boolean1 && boolean2 && boolean3) {
       console.log(`Congratulations!!!. You won ${this.coinsCount} coins!!`);
       this.coinsCount = 0; // Reiniciar el contador de monedas
     } else {
-      console.log("Good luck next time!!);
-    }  
+      console.log("Good luck next time!!");
+    }
   }
 }
-
 
 const machine1 = new SlothMachine();
 machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
@@ -52,4 +51,5 @@ machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You
 machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
 machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
 machine1.play(); // Puede ser "Good luck next time!!" o "Congratulations!!!. You won X coins!!"
+
 
